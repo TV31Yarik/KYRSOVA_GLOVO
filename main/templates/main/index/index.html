@@ -1,0 +1,133 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Головна{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item">
+      <img src="{% static 'img/carusel/Slider_McCrispy_Bacon.jpg' %}" class="d-block w-100" alt="..." style="max-height: 600px; object-fit: cover;">
+      <div class="container">
+        <div class="carousel-caption text-start">
+          <h1>Будеш МакКріспі Смокі Бекон?</h1>
+          <p class="opacity-75">Соковитий бургер вже чекає — не зволікай, замовляй просто зараз!</p>
+          <p><a class="btn btn-lg btn-primary" href="#">Детальніше</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item active">
+      <img src="{% static 'img/carusel/Slider_KFC.jpg' %}" class="d-block w-100" alt="..." style="max-height: 600px; object-fit: cover;">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Ланч бокси від KFC</h1>
+          <p>Все, що треба для ситого дня — в одному замовленні. Готові потішити себе?</p>
+          <p><a class="btn btn-lg btn-primary" href="#">Детальніше</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/carusel/Slider_bear.jpg' %}" class="d-block w-100" alt="..." style="max-height: 600px; object-fit: cover;">
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1>Пиво — завжди охолоджене</h1>
+          <p>Улюблені напої та снеки вже в дорозі! Все для затишного вечора — за кілька кліків.</p>
+          <p><a class="btn btn-lg btn-primary" href="#">Детальніше</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    {% for restaurant in restaurants %}
+    <div class="col-lg-4 text-center">
+        <img src="{{ restaurant.image_logo.url }}" alt="{{ restaurant.name }} Logo"
+             class="rounded-circle" width="140" height="140">
+        <h2 class="fw-normal">{{ restaurant.name }}</h2>
+        <p>{{ restaurant.description|truncatechars:150 }}</p>
+        <p><a class="btn btn-secondary" href="#">« МЕНЮ »</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette ">
+    <div class="col-md-7  fade-in ">
+      <h2 class="featurette-heading fw-normal lh-1">Доставляємо, поки гаряче. <br><span class="text-body-secondary">Швидше, ніж ти думаєш.</span></h2>
+      <p class="lead">У середньому лише 27 хвилин — і замовлення вже у вас!
+        Ми працюємо тільки з закладами, які дійсно дбають про швидкість та якість. Кожне ваше замовлення — це не просто їжа, а частина нашого прагнення до досконалості. З нами ви можете бути впевнені, що отримаєте смачні страви, приготовлені з найкращих інгредієнтів, та доставку точно вчасно. </p>
+    </div>
+    <div class="col-md-5  fade-in">
+      <img src="{% static 'img/main_1.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="...">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2  fade-in">
+      <h2 class="featurette-heading fw-normal lh-1">Обираємо найкращих. <span class="text-body-secondary">Жодного компромісу.</span></h2>
+      <p class="lead">Усі наші партнери проходять перевірку на якість страв, сервіс і швидкість.
+        Ми ретельно обираємо тільки ті заклади, які не тільки дбають про якість інгредієнтів, але й про кожен етап обслуговування клієнта. Від швидкості приготування до бездоганного сервісу — ми працюємо лише з тими, хто готовий забезпечити найкращий досвід для наших користувачів. Тільки ті, хто готує з душею, потрапляють до нашого списку партнерів.</p>
+    </div>
+    <div class="col-md-5 order-md-1  fade-in">
+      <img src="{% static 'img/main_2.png' %}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="...">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7  fade-in">
+      <h2 class="featurette-heading fw-normal lh-1">Замовляй — де і коли хочеш. <span class="text-body-secondary">Телефон — усе, що треба.</span></h2>
+      <p class="lead">Зручний та сучасний сайт, Telegram-бот, швидка оплата після реєстрації — все для вашої зручності.
+        Ми створили інтерфейс, який максимально простий у використанні. За допомогою нашого Telegram-бота ви можете швидко оформити замовлення та отримати актуальну інформацію про акції та новинки. Реєстрація на сайті займе всього кілька хвилин, а оплата після неї — швидка та безпечна. </p>
+    </div>
+    <div class="col-md-5  fade-in">
+      <img src="{% static 'img/main_3.png' %}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="...">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="px-4 py-5 my-5 text-center  fade-in">
+    <img class="d-block mx-auto mb-4" src={% static "img/happy.png" %} alt="" width="172" height="172">
+    <h1 class="display-5 fw-bold text-body-emphasis">Не зволікай — замовляй вже зараз!</h1>
+    <div class="col-lg-6 mx-auto  fade-in">
+      <p class="lead mb-4">Смачні страви, надійна доставка та просте оформлення — усе для твого комфорту. Ми вже готові вразити тебе сервісом, а кур’єр — доставити улюблену їжу просто до дверей. Зроби перший крок до задоволення!</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">ЗАМОВИТИ</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">ПЕРЕГЛЯНУТИ МЕНЮ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- /END THE FEATURETTES -->
+
+</div>
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock content %}

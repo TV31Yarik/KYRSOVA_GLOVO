@@ -1,0 +1,57 @@
+.foot-container {
+    margin: 10px auto; /* 50px зверху і знизу, auto по горизонталі для центрування */
+    max-width: 1200px; /* максимальна ширина */
+    
+    
+  }
+
+.head-container {
+    
+    background-color: rgb(255, 255, 255);
+    z-index: 1030; 
+    height: 95px;
+    border-bottom: 1px solid #000000; /* або інший колір */
+    
+}
+
+.head{
+    margin: auto;
+    max-width: 1200px;
+    
+}
+.head-container.scrolled {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* для ефекту */
+    border-bottom: 1px solid #000000; /* або інший колір */
+    
+    
+}
+
+
+.base_nav .nav-link {
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: #333;
+    padding: 10px 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.base_nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px; /* відстань від тексту */
+    width: 0;
+    height: 2px;
+    background-color: #ff6600; /* колір підкреслення */
+    transition: width 0.3s ease;
+}
+
+.base_nav .nav-link:hover::after {
+    width: 100%;
+}
+
+.base_nav li {
+    margin: 0 10px; /* горизонтальний відступ між кнопками */
+}
