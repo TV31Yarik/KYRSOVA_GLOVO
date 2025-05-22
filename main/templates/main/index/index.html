@@ -64,7 +64,7 @@
              class="rounded-circle" width="140" height="140">
         <h2 class="fw-normal">{{ restaurant.name }}</h2>
         <p>{{ restaurant.description|truncatechars:150 }}</p>
-        <p><a class="btn btn-secondary" href="#">« МЕНЮ »</a></p>
+        <p><a class="btn btn-secondary" href="/menu/{{restaurant.slug}}">« МЕНЮ »</a></p>
     </div>
     {% endfor %}
   </div>
@@ -120,8 +120,12 @@
     <div class="col-lg-6 mx-auto  fade-in">
       <p class="lead mb-4">Смачні страви, надійна доставка та просте оформлення — усе для твого комфорту. Ми вже готові вразити тебе сервісом, а кур’єр — доставити улюблену їжу просто до дверей. Зроби перший крок до задоволення!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">ЗАМОВИТИ</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">ПЕРЕГЛЯНУТИ МЕНЮ</button>
+        {% if user.is_authenticated %}
+      <a href="{% url 'menu' %}" class="btn btn-primary btn-lg px-4 gap-3">ЗАМОВИТИ</a>
+        {% else %}
+      <a href="{% url 'menu' %}" class="btn btn-outline-secondary btn-lg px-4">ПЕРЕГЛЯНУТИ МЕНЮ</a>
+      <a href="{%url 'registration'%}" class="btn btn-primary btn-lg px-4 gap-3">ЗАМОВИТИ</a>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'available', 'restaurant', 'category', 'discount']
     list_filter = ['available', 'restaurant', 'category']
-    search_fields = ['name', 'description']
+    search_fields = ['name', 'description', 'short_description']
     prepopulated_fields = {'slug': ('name',)}
     list_editable = ['price', 'available', 'discount']
 

@@ -20,12 +20,21 @@ from django.conf.urls.static import static
 
 
 from django.contrib import admin
-from django.urls import path
-from main import views
+from django.urls import path,include
+from main.views import home
+from products.views import restaurant_menu,product_detail,menu
+from users.views import login,registration,logout
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('menu/<slug:slug>/', restaurant_menu, name='restaurant_menu'),
+    path('menu/<slug:restaurant_slug>/<slug:product_slug>/', product_detail, name='product_detail'),
+    path('menu/', menu, name='menu'),
+    path('login/', login,name='login'),
+    path('registration/', registration, name='registration'),
+    path('logout/',logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

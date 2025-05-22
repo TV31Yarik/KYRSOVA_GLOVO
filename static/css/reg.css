@@ -1,0 +1,135 @@
+ * {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .container {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 40px auto;
+    position: relative;
+  }
+
+  .back-button {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #007BFF;
+    transition: color 0.3s ease;
+  }
+
+  .back-button:hover {
+    color: #0056b3;
+  }
+
+  h2 {
+    margin-bottom: 24px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    margin-top: 16px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.8px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0,123,255,0.4);
+  }
+
+  .checkbox-group {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .checkbox-group a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+
+  .checkbox-group a:hover {
+    text-decoration: underline;
+  }
+
+  button[type="submit"] {
+    margin-top: 28px;
+    width: 100%;
+    padding: 14px 0;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .signin-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+  }
+
+  .signin-link a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+
+  .signin-link a:hover {
+    text-decoration: underline;
+  }
+
+
+  .form-errors,
+.field-errors {
+  background-color: #ffe6e6;
+  border: 1px solid #ff4d4d;
+  color: #cc0000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.field-errors {
+  background-color: #fff0f0;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

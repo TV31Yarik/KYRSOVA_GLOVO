@@ -1,0 +1,34 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+
+<div class="container">
+ 
+  <a href="/" class="back-button" aria-label="Повернутись назад"> 
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  
+  <form action="{% url 'login' %}" method="post" novalidate>
+    {% csrf_token %}
+    <h2>Вхід в акаунт</h2>
+
+
+    {% if form.non_field_errors %}
+      <div class="form-errors">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <label for="{{ form.username.id_for_label }}">Ваш Логін</label>
+    {{ form.username }}
+
+    <label for="{{ form.password.id_for_label }}">Пароль</label>
+    {{ form.password }}
+
+    <button type="submit">Увійти</button>
+
+    <p class="signin-link">Ще не маєте акаунту? <a href="{% url 'registration' %}">Зареєструватися</a></p>
+  </form>
+</div>
+{% endblock content %}

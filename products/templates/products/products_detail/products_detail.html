@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}ТОВАР{% endblock title %}
+{% block content  %}
+<link rel="stylesheet" href="{% static 'css/products_detail.css' %}">
+
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="{{ product.main_image.url }}" class="d-block mx-lg-auto img-fluid" alt="{{ product.name }}" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ product.name }}</h1>
+      <p class="lead ">{{ product.short_description }}</p>
+      <div class="d-flex align-items-center gap-3 mt-3">
+  {% if product.discount %}
+    <span class="text-muted text-decoration-line-through fs-5">{{ product.price }} ₴</span>
+    <span class="text-danger fw-bold fs-4">{{ product.sel_price }} ₴</span>
+    <span class="badge bg-danger fs-6">-{{ product.discount }}%</span>
+  {% else %}
+    <span class="fw-bold fs-3">{{ product.sel_price }} ₴</span>
+  {% endif %}
+</div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start md-4 mt-4">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Додати до кошика</button>
+        <a href="{% url 'restaurant_menu' product.restaurant.slug %}" class="btn btn-outline-secondary btn-lg px-4">До меню</a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="featurette-divider">
+<div class="my-5">
+     <div class="p-5 text-center"> 
+        <div class="container py-5"> 
+            <h1 class="text-body-emphasis">{{product.name}}</h1> 
+            <p class="col-lg-8 mx-auto lead product-description">
+                {{product.description}}
+            </p> 
+        </div> 
+    </div> 
+</div>
+
+<div class="my-5">
+     <div class="p-5 text-center energy-container"> 
+        <div class="container py-5"> 
+            <h1 class="text-body-emphasis">ЕНЕРГЕТИЧНА ЦІНІСТЬ</h1> 
+            <p class="col-lg-8 mx-auto lead">
+                {{product.energy_value}}
+            </p> 
+        </div> 
+    </div> 
+</div>
+
+
+
+
+{% endblock content  %}

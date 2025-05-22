@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}МЕНЮ{% endblock title %}
+{% block content  %}
+<div class="container marketing mt-4 mb-4">
+    <h1 class="text-center mb-4 mt-4">Оберіть Заклад {{ restaurant.name }}</h1>
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    {% for restaurant in restaurants %}
+    <div class="col-lg-4 text-center">
+        <img src="{{ restaurant.image_logo.url }}" alt="{{ restaurant.name }} Logo"
+             class="rounded-circle" width="140" height="140">
+        <h2 class="fw-normal">{{ restaurant.name }}</h2>
+        <p>{{ restaurant.description|truncatechars:150 }}</p>
+        <p><a class="btn btn-secondary" href="/menu/{{restaurant.slug}}">« МЕНЮ »</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content  %}
