@@ -22,8 +22,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
 from main.views import home
-from products.views import restaurant_menu,product_detail,menu
+from products.views import restaurant_menu,product_detail,menu,product_modal
 from users.views import login,registration,logout
+from cart.views import cart_sidebar,cart_delete_item,cart_change_quantity
+from order.views import add_to_cart_ajax
 
 
 urlpatterns = [
@@ -35,6 +37,11 @@ urlpatterns = [
     path('login/', login,name='login'),
     path('registration/', registration, name='registration'),
     path('logout/',logout, name='logout'),
+    path('cart/sidebar/', cart_sidebar, name='cart_sidebar'),
+    path('cart/delete-item/', cart_delete_item, name='cart_delete_item'),
+    path('cart/change-quantity/', cart_change_quantity, name='cart_change_quantity'),
+    path('products/<int:pk>/modal/', product_modal, name='product_modal'),
+    path('cart/add_ajax/', add_to_cart_ajax, name='add_to_cart_ajax'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

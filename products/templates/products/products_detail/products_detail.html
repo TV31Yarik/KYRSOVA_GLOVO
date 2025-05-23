@@ -23,27 +23,35 @@
   {% endif %}
 </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start md-4 mt-4">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Додати до кошика</button>
+        <button
+  type="button"
+  class="btn btn-primary btn-lg px-4 me-md-2"
+  data-product-id="{{ product.id }}"
+  data-product-modal-url="{% url 'product_modal' product.id %}"
+  data-bs-toggle="modal"
+  data-bs-target="#productModal"
+>
+  Додати до кошика
+</button>
         <a href="{% url 'restaurant_menu' product.restaurant.slug %}" class="btn btn-outline-secondary btn-lg px-4">До меню</a>
       </div>
     </div>
   </div>
 </div>
 <hr class="featurette-divider">
-<div class="my-5">
-     <div class="p-5 text-center"> 
-        <div class="container py-5"> 
+<div class="my-4">
+     <div class="p-4 text-center"> 
+        <div class="container py-4"> 
             <h1 class="text-body-emphasis">{{product.name}}</h1> 
-            <p class="col-lg-8 mx-auto lead product-description">
-                {{product.description}}
-            </p> 
+            <div class="col-lg-8 mx-auto lead product-description">
+                {{product.description|linebreaks}}
+            </div> 
         </div> 
     </div> 
 </div>
-
-<div class="my-5">
-     <div class="p-5 text-center energy-container"> 
-        <div class="container py-5"> 
+<div class="my-4">
+     <div class="p-4 text-center energy-container"> 
+        <div class="container py-4"> 
             <h1 class="text-body-emphasis">ЕНЕРГЕТИЧНА ЦІНІСТЬ</h1> 
             <p class="col-lg-8 mx-auto lead">
                 {{product.energy_value}}
@@ -54,5 +62,20 @@
 
 
 
+
+
+
+
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="productModalContent">
+      <!-- Тут динамічно вставлятиметься HTML з бекенду -->
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'js/ordercart.js' %}"></script>
+<script src="{% static 'js/add.js' %}"></script>
 
 {% endblock content  %}

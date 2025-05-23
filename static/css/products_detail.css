@@ -1,8 +1,8 @@
 .product-description {
-  font-size: 1.5rem;       /* трохи більший текст */
+  font-size: 1.3rem;       /* трохи більший текст */
   line-height: 1.6;          /* комфортний міжрядковий інтервал */
   color: #444444;            /* темно-сірий колір тексту для кращої читабельності */
-  max-width: 720px;          /* обмеження ширини для кращого вигляду */
+  max-width: 800px;          /* обмеження ширини для кращого вигляду */
   margin: 0 auto;            /* центрований блок */
   padding: 0 15px;           /* невеликий відступ з боків */
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* приємний шрифт */
@@ -25,4 +25,32 @@
   font-weight: 1700;
   letter-spacing: 0.05em;
   text-align: center;
+}
+
+
+.custom-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1050; /* вище за Bootstrap модал */
+  font-weight: 600;
+}
+
+.custom-toast.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.custom-toast.error {
+  background: #f44336;
 }

@@ -1,0 +1,41 @@
+
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+<div class="modal-header">
+  <h5 class="modal-title" id="productModalLabel">{{ product.name }}</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+</div>
+
+<div class="modal-body d-flex align-items-start gap-3">
+  <!-- Зображення зліва -->
+  <div style="flex: 0 0 40%;">
+    <img src="{{ product.main_image.url }}" alt="{{ product.name }}" class="img-fluid rounded">
+  </div>
+
+  <!-- Права частина: назва, ціна, кількість -->
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <h4>{{ product.name }}</h4>
+        <p class="text-muted  mb-4">{{ product.short_description }}</p> 
+      <p class="fs-5 fw-semibold">Ціна: {{ product.sel_price }} ₴/шт</p>
+    </div>
+
+    <!-- Кількість з кнопками -->
+    <div class="d-flex align-items-center mb-3" style="max-width: 150px;">
+      <button class="btn btn-outline-secondary" type="button" id="decreaseQty">−</button>
+      <input type="number" id="product-quantity" class="form-control text-center mx-2" value="1" min="1" style="max-width: 60px;">
+      <button class="btn btn-outline-secondary" type="button" id="increaseQty">+</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer justify-content-center">
+  <!-- Кнопка "Додати до кошика" як на сторінці продукту -->
+  <button
+    type="button"
+    class="btn btn-primary btn-lg px-4"
+    id="addToCartBtn"
+    data-product-id="{{ product.id }}"
+  >
+    Додати до кошика
+  </button>
+</div>

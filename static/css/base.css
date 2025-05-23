@@ -55,3 +55,37 @@
 .base_nav li {
     margin: 0 10px; /* горизонтальний відступ між кнопками */
 }
+
+
+
+
+
+
+
+ .cart-sidebar.show {
+    display: block;
+    animation: slideIn 0.3s ease forwards;
+  }
+  .cart-sidebar.hide {
+  animation: slideOut 0.3s ease forwards;
+}
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes slideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+  .cart-sidebar {
+  width: 350px;
+  position: relative;
+  height: 100vh;
+}
+
+.close-cart-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}

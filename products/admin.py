@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Category,Restaurant,Product,ProductImage
+from.models import Category,Restaurant,Product
 
 @admin.register(Restaurant)
 class RestaurantAdmin(admin.ModelAdmin):
@@ -21,7 +21,3 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_editable = ['price', 'available', 'discount']
 
-@admin.register(ProductImage)
-class ProductImageAdmin(admin.ModelAdmin):
-    list_display = ['product', 'image']
-    list_filter = ['product']

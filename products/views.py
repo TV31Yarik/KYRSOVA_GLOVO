@@ -52,3 +52,7 @@ def product_detail(request, restaurant_slug, product_slug):
 def menu(request):
     restaurants = Restaurant.objects.all()
     return render(request, 'products/menu/menu.html', {'restaurants': restaurants})
+
+def product_modal(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'order/order.html', {'product': product})
