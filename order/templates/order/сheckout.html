@@ -1,0 +1,95 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Оформлення замовлення{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'css\ckeckout.css' %}">
+
+<div class="container mt-4">
+  <div class="delivery-info p-3 mb-4 rounded shadow-sm bg-light border">
+    <p><i class="bi bi-pencil-square"></i> Будь ласка, уважно заповніть форму доставки, щоб ми могли швидко та безпечно доставити ваше замовлення.</p>
+    <p><i class="bi bi-geo-alt"></i> Вкажіть точну адресу (місто, вулиця, номер будинку та квартири), щоб уникнути затримок.</p>
+    <p><i class="bi bi-telephone"></i> Не забудьте вказати актуальний номер телефону — наш кур'єр зателефонує вам перед доставкою.</p>
+    <p><i class="bi bi-truck"></i> Ми дбаємо про швидкість та якість: усі замовлення готуються на місці та доставляються протягом 30–60 хвилин.</p>
+  </div>
+
+  <h3 class="text-center mb-4">Оформлення замовлення</h3>
+{% if messages %}
+  <div class="container mt-3">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show custom-flash-message" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+  <div class="row">
+    <!-- Форма доставки -->
+    <div class="col-md-7">
+      <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+    {{ form.delivery_name.label_tag }}
+    {{ form.delivery_name }}
+    {% if form.delivery_name.errors %}
+      <div class="text-danger small">
+        {{ form.delivery_name.errors }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.phone.label_tag }}
+    {{ form.phone }}
+    {% if form.phone.errors %}
+      <div class="text-danger small">
+        {{ form.phone.errors }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.delivery_address.label_tag }}
+    {{ form.delivery_address }}
+    {% if form.delivery_address.errors %}
+      <div class="text-danger small">
+        {{ form.delivery_address.errors }}
+      </div>
+    {% endif %}
+  </div>
+
+        <button type="submit" class="btn btn-success">
+          <i class="bi bi-bag-check-fill"></i> Оформити замовлення
+        </button>
+      </form>
+    </div>
+
+    <!-- Кошик -->
+<div class="col-md-5">
+  <h4 class="text-end"><i class="bi bi-cart4"></i> Ваш кошик</h4>
+  <ul class="list-group">
+    {% for item in cart_items %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="{{ item.product.main_image.url }}" alt="{{ item.product.name }}" width="60" class="me-3 rounded">
+        <div>
+          <h6 class="mb-1">{{ item.product.name }}</h6>
+          <small class="text-muted">Ціна: {{ item.product.price }} грн × {{ item.quantity }}</small>
+        </div>
+      </div>
+      <span class="badge bg-primary rounded-pill">{{ item.get_total_price }} грн</span>
+    </li>
+    {% empty %}
+    <li class="list-group-item">Ваш кошик порожній</li>
+    {% endfor %}
+  </ul>
+
+  <div class="mt-3 text-end">
+    <h5>Всього: <span class="text-success">{{ total }} грн</span></h5>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,12 +1,12 @@
 .product-description {
-  font-size: 1.3rem;       /* трохи більший текст */
-  line-height: 1.6;          /* комфортний міжрядковий інтервал */
-  color: #444444;            /* темно-сірий колір тексту для кращої читабельності */
-  max-width: 800px;          /* обмеження ширини для кращого вигляду */
-  margin: 0 auto;            /* центрований блок */
-  padding: 0 15px;           /* невеликий відступ з боків */
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* приємний шрифт */
-  letter-spacing: 0.02em;    /* трохи збільшений інтервал між літерами */
+  font-size: 1.3rem;       
+  line-height: 1.6;          
+  color: #444444;            
+  max-width: 800px;          
+  margin: 0 auto;            
+  padding: 0 15px;           
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  letter-spacing: 0.02em;    
 }
 
 .badge {
@@ -41,7 +41,7 @@
   pointer-events: none;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 1050; /* вище за Bootstrap модал */
+  z-index: 1050; 
   font-weight: 600;
 }
 

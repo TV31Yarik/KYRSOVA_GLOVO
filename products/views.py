@@ -10,9 +10,7 @@ def restaurant_menu(request, slug ):
     category_id = request.GET.get('category')
     sort_option=request.GET.get('sort')
     search_query = request.GET.get('q')
-  
     
-
     if category_id:
         active_category = get_object_or_404(Category, id=category_id, restaurant=restaurant)
         products = Product.objects.filter(restaurant=restaurant, category=active_category, available=True)
@@ -29,12 +27,6 @@ def restaurant_menu(request, slug ):
     elif sort_option == 'alpha':
         products = products.order_by('name')    
     
-
-    
-    
-
-        
-
     return render(request, 'products/products_list/products_list.html', {
         'restaurant': restaurant,
         'categories': categories,

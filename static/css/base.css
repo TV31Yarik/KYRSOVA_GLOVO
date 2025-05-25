@@ -1,6 +1,7 @@
+
 .foot-container {
-    margin: 10px auto; /* 50px зверху і знизу, auto по горизонталі для центрування */
-    max-width: 1200px; /* максимальна ширина */
+    margin: 10px auto; 
+    max-width: 1200px; 
     
     
   }
@@ -10,7 +11,7 @@
     background-color: rgb(255, 255, 255);
     z-index: 1030; 
     height: 95px;
-    border-bottom: 1px solid #000000; /* або інший колір */
+    border-bottom: 1px solid #000000; 
     
 }
 
@@ -21,8 +22,8 @@
 }
 .head-container.scrolled {
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* для ефекту */
-    border-bottom: 1px solid #000000; /* або інший колір */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-bottom: 1px solid #000000; 
     
     
 }
@@ -41,10 +42,10 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: 5px; /* відстань від тексту */
+    bottom: 5px; 
     width: 0;
     height: 2px;
-    background-color: #ff6600; /* колір підкреслення */
+    background-color: #ff6600; 
     transition: width 0.3s ease;
 }
 
@@ -53,7 +54,7 @@
 }
 
 .base_nav li {
-    margin: 0 10px; /* горизонтальний відступ між кнопками */
+    margin: 0 10px; 
 }
 
 
@@ -89,3 +90,10 @@
   top: 0.5rem;
   right: 0.5rem;
 }
+
+
+
+
+
+
+

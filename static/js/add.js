@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const isAuthenticated = document.body.dataset.isAuthenticated === 'true';
   const addToCartBtn = document.querySelector('button.btn-primary[data-product-id]');
   const modalContent = document.getElementById('productModalContent');
-  const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+  const productModalElement = document.getElementById('productModal');
+  const productModal = new bootstrap.Modal(productModalElement);
 
   addToCartBtn.addEventListener('click', function () {
+     if (!isAuthenticated) {
+      window.location.href = '/login/'; 
+      return; 
+    }
     const modalUrl = this.dataset.productModalUrl;
 
     fetch(modalUrl)
@@ -18,6 +24,16 @@ document.addEventListener('DOMContentLoaded', function () {
         modalContent.innerHTML = '<p>Помилка завантаження.</p>';
         console.error(err);
       });
+  });
+
+  productModalElement.addEventListener('hidden.bs.modal', function () {
+    const backdrops = document.getElementsByClassName('modal-backdrop');
+    while(backdrops.length > 0) {
+      backdrops[0].parentNode.removeChild(backdrops[0]);
+    }
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
   });
 
   function setupQuantityButtons() {
@@ -74,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
           document.body.classList.remove('modal-open');
           document.body.style.overflow = 'auto';
           document.documentElement.style.overflow = 'auto';
+
           showToast(data.message);
         } else {
           showToast(data.message || 'Не вдалося додати до кошика', true);
