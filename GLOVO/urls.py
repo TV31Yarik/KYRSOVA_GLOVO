@@ -25,7 +25,7 @@ from main.views import home
 from products.views import restaurant_menu,product_detail,menu,product_modal
 from users.views import login,registration,logout,profile
 from cart.views import cart_sidebar,cart_delete_item,cart_change_quantity
-from order.views import add_to_cart_ajax,checkout,order_history
+from order.views import add_to_cart_ajax,checkout,order_history,create_checkout_session,payment_success
 
 
 urlpatterns = [
@@ -44,7 +44,10 @@ urlpatterns = [
     path('products/<int:pk>/modal/', product_modal, name='product_modal'),
     path('cart/add_ajax/', add_to_cart_ajax, name='add_to_cart_ajax'),
     path('checkout/',checkout,name='checkout'),
-    path ('order-history',order_history,name='order_history'),
+    path ('order-history/',order_history,name='order_history'),
+    path ('create-checkout-session/',create_checkout_session,name='create_checkout_session'),
+    path ('payment-success/',payment_success,name='payment_success'),
+    path('payment-cancel/', checkout, name='payment_cancel'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

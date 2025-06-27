@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'GLOVO.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  'GLOVO',
-        'USER': 'GLOVO',
-        'PASSWORD': 'GLOVO',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME':  config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'),
+        'PORT': config('PORT'),
 
     }
 }
@@ -141,3 +142,6 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR /'media'
 
 AUTH_USER_MODEL = 'users.User'
+
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
