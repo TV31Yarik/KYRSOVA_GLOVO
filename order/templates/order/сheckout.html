@@ -49,16 +49,24 @@
         {{ form.phone.errors }}
       </div>
     {% endif %}
+    
   </div>
-
-  <div class="mb-3">
-    {{ form.delivery_address.label_tag }}
+   <div class="mb-3">
     {{ form.delivery_address }}
+    <label for="address-input" class="form-label">Оберіть адресу доставки:</label>
+        <input
+          id="address-input"
+          type="text"
+          class="form-control mb-2"
+          placeholder="Введіть адресу вручну або оберіть на карті"
+        >
     {% if form.delivery_address.errors %}
       <div class="text-danger small">
         {{ form.delivery_address.errors }}
       </div>
     {% endif %}
+  </div>
+  <div id="map">
   </div>
 
         <button type="submit" class="btn btn-success">
@@ -91,5 +99,9 @@
     <h5>Всього: <span class="text-success">{{ total }} грн</span></h5>
   </div>
 </div>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places&callback=initMap">
+</script>
+<script src="{% static 'js/google_maps_api.js' %}"></script>
 
 {% endblock %}

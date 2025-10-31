@@ -54,7 +54,8 @@ def checkout(request):
     return render(request, 'order/сheckout.html', {
         'form': form,
         'cart_items': cart_items,
-        'total': total
+        'total': total,
+        'google_maps_api_key':settings.GOOGLE_MAPS_API_KEY
     })
 
 

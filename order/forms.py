@@ -2,7 +2,7 @@ from django import forms
 
 class CheckoutForm(forms.Form):
     delivery_name = forms.CharField(label='Ваше Ім’я', max_length=255)
-    delivery_address = forms.CharField(label='Адреса доставки', widget=forms.Textarea)
+    delivery_address = forms.CharField(label='Адреса доставки',  widget=forms.HiddenInput())
     phone = forms.CharField(label='Номер телефону', max_length=20)
 
     def __init__(self, *args, **kwargs):
@@ -20,5 +20,6 @@ class CheckoutForm(forms.Form):
                 'placeholder': '+380 00 000 0000'
             })
             self.fields['delivery_address'].widget.attrs.update({
-                'placeholder': 'Місто, вулиця, номер будинку, квартира'
+                'placeholder': 'Введіть точну адресу або оберіть на карті',
+                'id': 'id_delivery_address'
             })
